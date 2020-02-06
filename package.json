@@ -1,5 +1,5 @@
 {
-  "name": "popUp",
+  "name": "pop-up",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,17 +8,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AceviralPHP/avSearchBar.git"
+    "url": "git+https://github.com/AceviralPHP/PopUp.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/AceviralPHP/avSearchBar/issues"
+    "url": "https://github.com/AceviralPHP/PopUp/issues"
   },
-  "homepage": "https://github.com/AceviralPHP/avSearchBar#readme",
+  "homepage": "https://github.com/AceviralPHP/PopUp#readme",
   "dependencies": {
     "@babel/polyfill": "^7.4.4",
     "@types/node-fetch": "^2.5.0",
+    "core-js": "^3.6.4",
     "jquery": "^3.4.1",
     "ts-loader": "^6.0.4",
     "typescript": "^3.5.3",
@@ -30,6 +31,6 @@
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
     "@babel/preset-typescript": "^7.3.3",
-    "@types/jquery": "^3.3.30"
+    "@types/jquery": "^3.3.32"
   }
 }

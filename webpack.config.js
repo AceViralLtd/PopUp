@@ -3,7 +3,7 @@ const fullBuild = {
     entry: "./src/index.ts",
     output: {
         path: __dirname + "/dst",
-        filename: "popUp.min.js",
+        filename: "pop-up.min.js",
         libraryTarget: "window"
     },
     resolve: {
