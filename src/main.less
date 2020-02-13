@@ -1,3 +1,4 @@
+
 .popup-wrapper {
     display: none;
 
@@ -13,15 +14,21 @@
         cursor: pointer;
     }
 
-    .contentWrapper {
+    #popup {
         position: fixed;
         background-color: #fff;
         border-radius: 10px;
         box-shadow: #000 6px 6px 6px;
         z-index: 101;
         display: inline-block;
+        left: 50%;
+        top: 50%;
+        transform: translateX(-50%) translateY(-50%);
         min-width: 200px;
-        max-width: 1000px;
+        min-height: 200px;
+        max-width: calc(100vw - 50px);
+        max-height: calc(100vh - 50px);
+        overflow: auto;
         padding: 5px;
 
         .closeButton {
