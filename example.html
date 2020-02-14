@@ -5,24 +5,31 @@
     <title>Example PopUp</title>
 
     <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="css/main.min.css" />
+    <link rel="stylesheet" type="text/css" href="dst/PopUp.min.css" />
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script src="dst/pop-up.min.js"></script>
+    <script src="dst/PopUp.min.js"></script>
 
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
 </head>
-<body>
+<body style="background-color:#aaaaaa">
     <a href="javascript:void(0)" id="popup-example">Popup</a>
 </body>
 <script>
     $(document).ready(function() {
-        var popup = new PopUp();
+        var popup = new PopUp({
+            closeButton: true,
+            backgroundCanClosePopup: false,
+            centerHeader: true,
+        });
 
         $("#popup-example").on("click", function() {
-
+            popup.open(
+                `Bacon ipsum dolor amet landjaeger chislic porchetta buffalo, turkey sirloin pig tongue shankle chuck ham hock picanha kielbasa hamburger strip steak. Strip steak porchetta pig beef brisket beef ribs. Andouille beef turkey ground round, salami turducken alcatra pork strip steak shankle shank meatball ham hock short ribs. Tongue shank sausage meatloaf. Cupim fatback bresaola, leberkas brisket turducken tongue rump shoulder pork alcatra doner ground round strip steak. Ball tip short ribs buffalo t-bone pig pastrami beef sausage pork belly tail shankle venison chicken biltong salami.<br><br>Shank pancetta ball tip, venison drumstick beef chicken biltong. Andouille pork loin hamburger kevin bresaola corned beef. Turducken flank brisket tri-tip kevin pig alcatra sirloin jowl meatloaf pork picanha beef jerky chuck. Rump prosciutto bacon, ham drumstick landjaeger ball tip. Meatball pig turkey, salami shank tenderloin buffalo doner fatback picanha spare ribs biltong sausage.<br><br>Salami ground round chicken, frankfurter capicola pastrami short loin shank turducken t-bone beef biltong venison shoulder. Short loin corned beef chuck shankle ball tip, ground round t-bone pastrami burgdoggen flank hamburger jowl. Pig capicola jerky kielbasa salami pork chop beef ribs buffalo shoulder sausage shank. Beef ribs sausage sirloin ribeye jerky pork loin ground round landjaeger spare ribs. Fatback jowl tail shankle. Pig kielbasa tail chislic.<br><br>Pork chop pork biltong, corned beef turducken cupim ball tip hamburger pork belly salami. Filet mignon meatloaf leberkas, jowl shankle ball tip brisket short loin corned beef. Frankfurter shoulder andouille beef ribs corned beef, fatback tenderloin ham burgdoggen chislic ball tip. Porchetta frankfurter chuck bacon beef pork belly pancetta leberkas biltong beef ribs.<br><br>Alcatra chicken ham hock burgdoggen. Salami doner ham hock tenderloin strip steak alcatra, cupim pork belly brisket landjaeger. Fatback jerky hamburger, beef ribs bacon porchetta frankfurter flank brisket. Porchetta boudin ground round pastrami cow ball tip chislic flank shoulder t-bone pork chop pancetta.<br><br>Does your lorem ipsum text long for something a little meatier? Give our generator a try… it’s tasty!`,
+                "HEADER"
+            );
         })
     });
 </script>

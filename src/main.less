@@ -1,8 +1,20 @@
 
-.popup-wrapper {
+
+#popup-wrapper {
+    --close-color-background: red;
+    --close-color-text: white;
+    --popup-cover-color : rgba(0, 0, 0, 0.6);
     display: none;
 
-    .cover {
+    .clickable {
+        cursor: pointer;
+    }
+
+    .center {
+        text-align: center;
+    }
+
+    #popup-cover {
         position: fixed;
         top: 0px;
         left: 0px;
@@ -10,11 +22,11 @@
         right: 0px;
         z-index: 100;
         background-color: #ccc;
-        background-color: rgba(0, 0, 0, 0.6);
-        cursor: pointer;
+        background-color: var(--popup-cover-color);
+
     }
 
-    #popup {
+    .popup {
         position: fixed;
         background-color: #fff;
         border-radius: 10px;
@@ -29,13 +41,31 @@
         max-width: calc(100vw - 50px);
         max-height: calc(100vh - 50px);
         overflow: auto;
-        padding: 5px;
 
-        .closeButton {
-            position: absolute;
-            right: 5px;
-            text-decoration: underline;
-            cursor: pointer;
+
+        .popup-header{
+            border-bottom:1px solid black;
+
+            display: block;
+            font-size: 1.17em;
+            font-weight: bold;
+            padding:10px;
+
+            .close {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                border: 1px solid var(--close-color-background);
+                border-radius: 100%;
+                background-color: var(--close-color-background);
+                color: var(--close-color-text);
+                font-weight: bolder;
+
+            }
+        }
+
+        .popup-body{
+            padding: 5px 15px;
         }
     }
 }

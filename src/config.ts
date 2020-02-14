@@ -1,11 +1,11 @@
 export interface Config {
-    useDefaultStyle: boolean,
     closeButton: boolean,
-    singlePopUp: boolean,
+    backgroundCanClosePopup: boolean,
+    centerHeader: boolean
 }
 
 export const defaultConfig: Config = {
-    useDefaultStyle: true,
-    closeButton: false,
-    singlePopUp: true,
+    closeButton: true,
+    backgroundCanClosePopup: true,
+    centerHeader: true
 };

@@ -16,23 +16,19 @@ export default class PopUp {
         $("body").append(this.buildWrapperHtml());
 
         this.$wrapper = $("#popup-wrapper");
-
         this.$cover = $("#popup-cover");
-
         this.$popUp = null;
-
         this.$closeButton = null;
     }
 
-    public open(html: string): void
+    public open(body: string, header: string = ""): void
     {
         this.$wrapper.append(this.buildHtml());
-
-        this.$popUp = this.$wrapper.find("#popup");
-
+        this.$popUp = this.$wrapper.find(".popup");
         this.$closeButton = this.$popUp.find(".close");
 
-        this.$popUp.append(html);
+        this.$popUp.find(".popup-header").append(header);
+        this.$popUp.find(".popup-body").html(body);
 
         this.$wrapper.show();
 
@@ -60,12 +56,14 @@ export default class PopUp {
     private bindClose(): void
     {
 
-        this.$popUp.on("click", function (e) { e.stopPropagation(); return false; });
+        // this.$popUp.on("click", function (e) { e.stopPropagation(); return false; });
 
-        this.$cover.on("click", this.close);
+        if (this.config.backgroundCanClosePopup){
+            this.$cover.on("click", this.close.bind(this));
+        }
 
         if (this.$closeButton != null){
-            this.$closeButton.on("click", this.close);
+            this.$closeButton.on("click", this.close.bind(this));
         }
     }
 
@@ -84,16 +82,19 @@ export default class PopUp {
     {
         return `
             <div id="popup-wrapper">
-                <div id="popup-cover"></div>
+                <div id="popup-cover" class="${this.config.backgroundCanClosePopup ? "clickable" : ""}"></div>
             </div>
         `;
 
     }
-    private buildHtml(closeButton: boolean = this.config.closeButton): string
+    private buildHtml(): string
     {
         return `
-            <div id="popup">
-                ${closeButton ? '<div class="close">CLOSE</div>' : ''}
+            <div class="popup">
+                <div class="popup-header ${this.config.centerHeader ? 'center' : ''}">
+                    ${this.config.closeButton ? '<div class="close clickable">&nbsp;&times;&nbsp;</div>' : ''}
+                </div>
+                <div class="popup-body"></div>
             </div>
         `;
     }
