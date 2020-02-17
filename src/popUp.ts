@@ -4,10 +4,10 @@ export default class PopUp {
 
     private config: Config;
 
-    private $wrapper: JQuery;
-    private $cover: JQuery;
-    private $popUp: JQuery;
-    private $closeButton: JQuery;
+    private $wrapper: JQuery<Element>;
+    private $cover: JQuery<Element>;
+    private $popUp: JQuery<Element>;
+    private $closeButton: JQuery<Element>;
 
     public constructor(config: Config = defaultConfig)
     {
@@ -38,13 +38,10 @@ export default class PopUp {
     public close(): void
     {
         this.$wrapper.hide();
-
         this.removeBind();
-
         this.$popUp.remove();
 
         this.$popUp = null;
-
         this.$closeButton = null;
     }
 
@@ -55,9 +52,6 @@ export default class PopUp {
 
     private bindClose(): void
     {
-
-        // this.$popUp.on("click", function (e) { e.stopPropagation(); return false; });
-
         if (this.config.backgroundCanClosePopup){
             this.$cover.on("click", this.close.bind(this));
         }
@@ -70,7 +64,6 @@ export default class PopUp {
     private removeBind(): void
     {
         this.$popUp.unbind("click", false);
-
         this.$cover.unbind("click", false);
 
         if (this.$closeButton != null){
