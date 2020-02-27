@@ -4,10 +4,10 @@ export default class PopUp {
 
     private config: Config;
 
-    private $wrapper: JQuery<Element>;
-    private $cover: JQuery<Element>;
-    private $popUp: JQuery<Element>;
-    private $closeButton: JQuery<Element>;
+    private $wrapper: JQuery<HTMLElement>;
+    private $cover: JQuery<HTMLElement>;
+    private $popUp: JQuery<HTMLElement>;
+    private $closeButton: JQuery<HTMLElement>;
 
     public constructor(config: Config = defaultConfig)
     {
@@ -27,8 +27,8 @@ export default class PopUp {
         this.$popUp = this.$wrapper.find(".popup");
         this.$closeButton = this.$popUp.find(".close");
 
-        this.$popUp.find(".popup-header").append(header);
-        this.$popUp.find(".popup-body").html(body);
+        this.$popUp.find(".header").append(header);
+        this.$popUp.find(".body").html(body);
 
         this.$wrapper.show();
 
@@ -84,10 +84,10 @@ export default class PopUp {
     {
         return `
             <div class="popup">
-                <div class="popup-header ${this.config.centerHeader ? 'center' : ''}">
+                <div class="header ${this.config.centerHeader ? 'center' : ''}">
                     ${this.config.closeButton ? '<div class="close clickable">&nbsp;&times;&nbsp;</div>' : ''}
                 </div>
-                <div class="popup-body"></div>
+                <div class="body"></div>
             </div>
         `;
     }

@@ -2,6 +2,9 @@
     --close-color-background: red;
     --close-color-text: white;
     --popup-cover-color : rgba(0, 0, 0, 0.6);
+    --border-radius: 10px;
+
+
     display: none;
 
     .clickable {
@@ -27,7 +30,7 @@
     .popup {
         position: fixed;
         background-color: #fff;
-        border-radius: 10px;
+        border-radius: var(--border-radius);
         box-shadow: #000 6px 6px 6px;
         z-index: 101;
         display: inline-block;
@@ -41,7 +44,7 @@
         overflow: auto;
 
 
-        .popup-header{
+        .header {
             border-bottom:1px solid black;
 
             display: block;
@@ -62,7 +65,7 @@
             }
         }
 
-        .popup-body{
+        .body {
             padding: 5px 15px;
         }
     }
