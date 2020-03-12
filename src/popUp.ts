@@ -1,6 +1,8 @@
 import { Config, defaultConfig } from './config';
 
 export default class PopUp {
+    public $body: JQuery<HTMLElement>;
+    public $header: JQuery<HTMLElement>;
 
     private config: Config;
 
@@ -19,17 +21,10 @@ export default class PopUp {
 
     public open(body: string, header: string = ""): void
     {
-        $("body").append(this.buildWrapperHtml());
-        this.$wrapper = $("#popup-wrapper");
-        this.$cover = $("#popup-cover");
+        this.ensureSetup();
 
-        this.$wrapper.append(this.buildHtml());
-        this.$popUp = this.$wrapper.find(".popup");
-        this.$closeButton = this.$popUp.find(".close");
-
-        this.$popUp.find(".header").append(header);
-        this.$popUp.find(".body").html(body);
-
+        this.$header.append(header);
+        this.$body.html(body);
         this.$wrapper.show();
 
         this.bindClose();
@@ -37,15 +32,68 @@ export default class PopUp {
 
     public close(): void
     {
-        this.$wrapper.remove();
+        this.$wrapper.hide();
+        this.$popUp.remove();
+
+        this.removeBind();
 
         this.$popUp = null;
+        this.$closeButton = null;
+    }
+
+    public clean(): void
+    {
+        this.$wrapper.remove();
+        this.$wrapper = null;
+        this.$cover = null;
         this.$closeButton = null;
     }
 
     public isOpen(): boolean
     {
         return this.$popUp.is(":visible");
+    }
+
+    private ensureSetup(): void
+    {
+        if (null == this.$wrapper || !this.$wrapper.length) {
+            let $existingWrapper = $("#popup-wrapper");
+
+            if ($existingWrapper.length) {
+                this.$wrapper = $existingWrapper;
+            } else {
+                $("body").append(this.buildWrapperHtml());
+                this.$wrapper = $("#popup-wrapper");
+            }
+
+            this.$cover = this.$wrapper.find("#popup-cover");
+        }
+
+        if (null == this.$popUp || !this.$popUp.length) {
+            let $existingPopup = this.$wrapper.find(".popup");
+
+            if ($existingPopup.length) {
+                this.$popUp = $existingPopup;
+            } else {
+                this.$wrapper.append(this.buildHtml());
+                this.$popUp = this.$wrapper.find(".popup");
+            }
+
+            this.$closeButton = this.$popUp.find(".close");
+
+            this.$body = this.$popUp.find(".body");
+            this.$header = this.$popUp.find(".header");
+        }
+    }
+
+    private removeBind(): void	
+    {	
+        this.$popUp.off("click");	
+        this.$cover.off("click");	
+
+        if (this.$closeButton != null){	
+            this.$closeButton.off("click");	
+        }	
     }
 
     private bindClose(): void
