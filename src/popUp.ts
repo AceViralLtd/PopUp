@@ -13,16 +13,16 @@ export default class PopUp {
     {
         this.config = config;
 
-        $("body").append(this.buildWrapperHtml());
-
-        this.$wrapper = $("#popup-wrapper");
-        this.$cover = $("#popup-cover");
         this.$popUp = null;
         this.$closeButton = null;
     }
 
     public open(body: string, header: string = ""): void
     {
+        $("body").append(this.buildWrapperHtml());
+        this.$wrapper = $("#popup-wrapper");
+        this.$cover = $("#popup-cover");
+
         this.$wrapper.append(this.buildHtml());
         this.$popUp = this.$wrapper.find(".popup");
         this.$closeButton = this.$popUp.find(".close");
@@ -37,9 +37,7 @@ export default class PopUp {
 
     public close(): void
     {
-        this.$wrapper.hide();
-        this.removeBind();
-        this.$popUp.remove();
+        this.$wrapper.remove();
 
         this.$popUp = null;
         this.$closeButton = null;
@@ -58,16 +56,6 @@ export default class PopUp {
 
         if (this.$closeButton != null){
             this.$closeButton.on("click", this.close.bind(this));
-        }
-    }
-
-    private removeBind(): void
-    {
-        this.$popUp.unbind("click", false);
-        this.$cover.unbind("click", false);
-
-        if (this.$closeButton != null){
-            this.$closeButton.unbind("click", false);
         }
     }
 
