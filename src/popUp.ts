@@ -84,9 +84,9 @@ export default class PopUp {
     {
         return `
             <div class="popup">
-                <div class="header ${this.config.centerHeader ? 'center' : ''}">
-                    ${this.config.closeButton ? '<div class="close clickable">&nbsp;&times;&nbsp;</div>' : ''}
-                </div>
+                <div class="header ${this.config.centerHeader ? 'center' : ''}">${
+                    this.config.closeButton ? '<div class="close clickable">&nbsp;&times;&nbsp;</div>' : ''
+                }</div>
                 <div class="body"></div>
             </div>
         `;
