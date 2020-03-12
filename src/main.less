@@ -43,6 +43,16 @@
         max-height: calc(100vh - 50px);
         overflow: auto;
 
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            border: 1px solid var(--close-color-background);
+            border-radius: 100%;
+            background-color: var(--close-color-background);
+            color: var(--close-color-text);
+            font-weight: bolder;
+        }
 
         .header {
             border-bottom:1px solid black;
@@ -52,17 +62,6 @@
             font-weight: bold;
             padding:10px;
 
-            .close {
-                position: absolute;
-                top: 10px;
-                right: 10px;
-                border: 1px solid var(--close-color-background);
-                border-radius: 100%;
-                background-color: var(--close-color-background);
-                color: var(--close-color-text);
-                font-weight: bolder;
-
-            }
         }
 
         .body {

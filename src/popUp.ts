@@ -23,7 +23,7 @@ export default class PopUp {
     {
         this.ensureSetup();
 
-        this.$header.append(header);
+        this.$header.html(header);
         this.$body.html(body);
         this.$wrapper.show();
 
@@ -120,11 +120,20 @@ export default class PopUp {
     {
         return `
             <div class="popup">
-                <div class="header ${this.config.centerHeader ? 'center' : ''}">${
-                    this.config.closeButton ? '<div class="close clickable">&nbsp;&times;&nbsp;</div>' : ''
-                }</div>
+                ${this.buildCloseButton()}
+                <div class="header ${this.config.centerHeader ? 'center' : ''}"></div>
                 <div class="body"></div>
             </div>
         `;
+    }
+
+    private buildCloseButton(): string
+    {
+
+        if (this.config.closeButton) {
+            return '<div class="close clickable">&nbsp;&times;&nbsp;</div>';
+        }
+
+        return '';
     }
 }
